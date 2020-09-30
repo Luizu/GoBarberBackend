@@ -18,6 +18,4 @@ export default class UserController {
 
     return response.json(user);
   }
-
-  public async;
 }
