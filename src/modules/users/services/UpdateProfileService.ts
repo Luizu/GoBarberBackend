@@ -15,13 +15,13 @@ interface IRequest {
 }
 
 @injectable()
-class UpdateProfile {
+class UpdateProfileService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
 
     @inject('HashProvider')
-    private HashProvider: IHashProvider,
+    private hashProvider: IHashProvider,
   ) {}
 
   public async execute({
@@ -53,7 +53,7 @@ class UpdateProfile {
     }
 
     if (password && old_password) {
-      const checkOldPassword = await this.HashProvider.compareHash(
+      const checkOldPassword = await this.hashProvider.compareHash(
         old_password,
         user.password,
       );
@@ -62,11 +62,11 @@ class UpdateProfile {
         throw new AppError('Old password does not match');
       }
 
-      user.password = await this.HashProvider.generateHash(password);
+      user.password = await this.hashProvider.generateHash(password);
     }
 
     return this.usersRepository.save(user);
   }
 }
 
-export default UpdateProfile;
+export default UpdateProfileService;
