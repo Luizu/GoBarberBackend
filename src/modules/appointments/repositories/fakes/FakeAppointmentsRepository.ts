@@ -6,7 +6,7 @@ import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointment
 
 import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO';
 import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllIDayFromProviderDTO';
-import Appointment from '../../infra/typeorm/entities/appointment';
+import Appointment from '../../infra/typeorm/entities/Appointment';
 
 class AppointmentsRepository implements IAppointmentsRepository {
   private appointments: Appointment[] = [];
